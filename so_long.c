@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:15:49 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/19 06:15:16 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/21 10:28:38 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ typedef struct	s_map
 	int	rows;
 	int	cols;
 	int	is_rectangular;
-	//int	count_empty_spaces;
 	int	surrounded_by_walls;
 	int	count_collectibles;
 	int	count_map_exit;
@@ -28,27 +27,31 @@ typedef struct	s_map
 	int	exit_col;
 	int	have_another_char;
 	int	can_player_eat_all_collectibles;
+	int	can_player_exit;
 	char **map;
 }	t_map;
 
-int	ft_is_valid_map(int fd, t_map *map_details)
+
+
+int	ft_is_valid_map(t_map map_details)
 {
-	if ((*map_details).cols == (*map_details).rows)
-		return (0);
-	if ((*map_details).cols < 3 || (*map_details).rows < 3)
-		return (0);
-	if (!(*map_details).surrounded_by_walls)
-		return (0);
-	if (!(*map_details).count_collectibles)
-		return (0);
-	if ((*map_details).count_starting_position != 1)
-		return (0);
-	if ((*map_details).count_map_exit != 1)
-		return (0);
-	if ((*map_details).have_another_char)
-		return (0);
-	
-	
+	if (map_details.cols == map_details.rows || (!map_details.is_rectangular))
+		return (ft_putstr_fd("The map must be rectangular!", 2), 0);
+	if (!map_details.surrounded_by_walls)
+		return (ft_putstr_fd("The map must be closed/surrounded by walls!", 2), 0);
+	if (!map_details.count_collectibles)
+		return (ft_putstr_fd("The map must contain at least 1 collectible!", 2), 0);
+	if (map_details.count_map_exit != 1)
+		return (ft_putstr_fd("The map must contain 1 exit!", 2), 0);
+	if (map_details.count_starting_position != 1)
+		return (ft_putstr_fd("The map must contain 1 starting position!", 2), 0);
+	if (map_details.have_another_char)
+		return (ft_putstr_fd("The map must contain 0, 1, C, E or P!", 2), 0);
+	if (!map_details.can_player_eat_all_collectibles)
+		return (ft_putstr_fd("the player can't eat all collectibkes!", 2), 0);
+	if (!map_details.can_player_exit)
+		return (ft_putstr_fd("the player can't exit", 2), 0);
+	return (0);
 }
 
 t_list	*ft_read_file(int fd, t_map *map_details)
@@ -112,15 +115,10 @@ int	main()
 {
 	t_map	map_details;
 	int						fd;
-
-	map_details = (t_map){-1, -1, -1, -1, -1, -1, -1, 
-				-1, -1, -1, -1, -1, -1, -1, -1};
-
+	
+	map_details = (t_map){-1, -1, 1, 1, 0, 1, 0, -1, -1, -1, -1, 0, 1, 1, NULL};
 	fd = open("map.ber", O_RDONLY);
 	ft_is_valid_map(fd, &map_details);
+	ft_is_valid_map(map_details);
 	return (0);
 }
-
-###
-# #2
-###
