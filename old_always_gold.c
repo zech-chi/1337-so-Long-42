@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 13:22:45 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/22 10:34:00 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:44:41 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,3 +87,19 @@
 //	(*map_details).rows = r;
 //	return (NULL);
 //}
+
+//void	ft_lstclear(t_list **lst, void (*del)(void*))
+//{
+//	t_list	*cur_node;
+//	t_list	*nxt_node;
+
+//	if (!lst || !del)
+//		return ;
+//	cur_node = *lst;
+//	while (cur_node)
+//	{
+//		nxt_node = cur_node->next;
+//		(*del)(cur_node->content);
+//		free(cur_node);
+//		cur_node = nxt_node;
+//	}

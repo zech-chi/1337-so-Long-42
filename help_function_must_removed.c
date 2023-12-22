@@ -2,7 +2,7 @@
 
 void	ft_print_map_info(t_map map_details)
 {
-	printf("------------------------------\n");
+	printf("------------------------------------------------------------\n");
 	printf("cols : %d\n", map_details.cols);
 	printf("rows : %d\n", map_details.rows);
 	printf("is_rectangular : %d\n", map_details.is_rectangular);
@@ -17,9 +17,13 @@ void	ft_print_map_info(t_map map_details)
 	printf("have_another_char : %d\n", map_details.have_another_char);
 	printf("can_player_eat_all_collectibles : %d\n", map_details.can_player_eat_all_collectibles);
 	printf("can_player_exit : %d\n", map_details.can_player_exit);
-	printf("map : coming soon!!\n");
-	printf("------------------------------\n");
-	//char **map;
+	printf("map: \n");
+	int r = -1;
+	while (++r < map_details.rows)
+	{
+		printf("%s", map_details.map[r]);
+	}
+	printf("\n-------------------------------------------------------------\n");
 }
 
 //#include <string.h>

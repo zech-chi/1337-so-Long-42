@@ -6,25 +6,34 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:15:49 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/22 11:52:17 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:55:42 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
+void	ft_leaks(void)
+{
+	system("leaks a.out");
+}
 
 int	main(void)
 {
 	t_map	map_details;
 	int		fd;
+	t_list	*head;
 
+	atexit(ft_leaks);
 	map_details = (t_map){-1, -1, 1, 1, 0, 0, 0, -1, -1, -1, -1, 0, 1, 1, NULL};
 	fd = open("map.ber", O_RDONLY);
-	ft_print_map_info(map_details);
-	ft_read_file(fd, &map_details);
+	head = ft_read_file(fd, &map_details);
+	map_details.map = ft_create_map(&head, map_details);
+	ft_lstclear(&head);
+	if (!map_details.map)
+		return (0);
 	ft_print_map_info(map_details);
 	ft_is_valid_map_part1(map_details);
 	ft_is_valid_map_part2(map_details, 0);
+	ft_clear_map(map_details.map);
 	return (0);
 }

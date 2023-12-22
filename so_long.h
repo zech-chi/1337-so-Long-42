@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/22 11:52:55 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/22 13:56:47 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_list
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
-void	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstclear(t_list **lst);
 t_list	*ft_lstlast(t_list *lst);
 
 typedef struct s_map
@@ -63,6 +63,9 @@ int		ft_is_valid_map_part1(t_map map_details);
 int		ft_is_valid_map_part2(t_map map_details, int check_path);
 void	ft_line_scanner(t_map *map_details, char *line, int r, int *c);
 t_list	*ft_read_file(int fd, t_map *map_details);
+
+char	**ft_create_map(t_list **head, t_map map_details);
+void	ft_clear_map(char **str);
 
 void	ft_print_map_info(t_map map_details); //////////////////
 #endif
