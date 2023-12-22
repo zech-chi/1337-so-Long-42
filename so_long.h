@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/21 13:24:51 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/22 10:38:04 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ char	*ft_strdup(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 void	shift_buff_or_clean_it(char *buff, size_t j);
 int		has_the_end(char *buff, char **line);
-
-void	ft_putstr_fd(char *s, int fd);
 
 typedef struct s_list
 {
@@ -60,4 +58,9 @@ typedef struct s_map
 	char	**map;
 }	t_map;
 
+void	ft_putstr_fd(char *s, int fd);
+int		ft_is_valid_map_part1(t_map map_details);
+int		ft_is_valid_map_part2(t_map map_details, int check_path);
+
+void	ft_print_map_info(t_map map_details); //////////////////
 #endif
