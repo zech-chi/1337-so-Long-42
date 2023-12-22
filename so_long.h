@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/22 11:07:20 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/22 11:52:55 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_map
 void	ft_putstr_fd(char *s, int fd);
 int		ft_is_valid_map_part1(t_map map_details);
 int		ft_is_valid_map_part2(t_map map_details, int check_path);
+void	ft_line_scanner(t_map *map_details, char *line, int r, int *c);
+t_list	*ft_read_file(int fd, t_map *map_details);
 
 void	ft_print_map_info(t_map map_details); //////////////////
 #endif
