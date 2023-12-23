@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:55:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/22 13:55:39 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/23 10:50:12 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,61 @@ void	ft_clear_map(char **str)
 		r++;
 	}
 	free(str);
+}
+
+void	ft_flood_fill(char **map, t_map map_details, int r, int c)
+{
+	int	directions[4][2];
+	int	nr;
+	int	nc;
+	int	i;
+
+	directions[0][0] = 1;
+	directions[0][1] = 0;
+	directions[1][0] = 0;
+	directions[1][1] = 1;
+	directions[2][0] = -1;
+	directions[2][1] = 0;
+	directions[3][0] = 0;
+	directions[3][1] = -1;
+	map[r][c] = 'v';
+	i = -1;
+	while (++i < 4)
+	{
+		nr = r + directions[i][0];
+		nc = c + directions[i][1];
+		if ((0 <= nr && nr < map_details.rows) \
+		&& (0 <= nc && nc < map_details.cols) \
+		&& (map[nr][nc] != '1') && (map[nr][nc] != 'v'))
+			ft_flood_fill(map, map_details, nr, nc);
+	}
+}
+
+int	ft_can_eat_and_exit(t_map *map_details)
+{
+	char	**map_copy;
+	int		r;
+	int		c;
+
+	map_copy = (char **)malloc(sizeof(char *) * (map_details->rows + 1));
+	if (!map_copy)
+		return (0);
+	r = -1;
+	while (++r < map_details->rows)
+		map_copy[r] = ft_strdup(map_details->map[r]);
+	map_copy[r] = NULL;
+	ft_flood_fill(map_copy, *map_details, map_details->player_row, \
+	map_details->player_col);
+	while (--r >= 0)
+	{
+		c = -1;
+		while (++c < map_details->cols)
+		{
+			if (map_copy[r][c] == 'C')
+				map_details->can_player_eat_all_collectibles = 0;
+			else if (map_copy[r][c] == 'E')
+				map_details->can_player_exit = 0;
+		}
+	}
+	return (ft_clear_map(map_copy), 1);
 }
