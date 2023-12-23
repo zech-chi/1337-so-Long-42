@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*   so_long_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:05:42 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/22 11:52:24 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/23 10:39:34 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_is_valid_map_part1(t_map map_details)
 		ft_putstr_fd("The map must contain 1 exit!", 2);
 		is_something_worng = 1;
 	}
-	return (is_something_worng);
+	return (is_something_worng == 0);
 }
 
 int	ft_is_valid_map_part2(t_map map_details, int check_path)
@@ -65,7 +65,7 @@ int	ft_is_valid_map_part2(t_map map_details, int check_path)
 	}
 	if (check_path && !map_details.can_player_eat_all_collectibles)
 	{
-		ft_putstr_fd("the player can't eat all collectibkes!", 2);
+		ft_putstr_fd("the player can't eat all collectibles!", 2);
 		is_something_worng = 1;
 	}
 	if (check_path && !map_details.can_player_exit)
@@ -73,7 +73,7 @@ int	ft_is_valid_map_part2(t_map map_details, int check_path)
 		ft_putstr_fd("the player can't exit", 2);
 		is_something_worng = 1;
 	}
-	return (is_something_worng);
+	return (is_something_worng == 0);
 }
 
 void	ft_line_scanner(t_map *map_details, char *line, int r, int *c)

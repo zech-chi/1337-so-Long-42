@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/22 13:56:47 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/23 10:12:32 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,6 @@ char	**ft_create_map(t_list **head, t_map map_details);
 void	ft_clear_map(char **str);
 
 void	ft_print_map_info(t_map map_details); //////////////////
+
+// gabreg colector!!!!!
 #endif
