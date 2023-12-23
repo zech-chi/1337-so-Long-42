@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/23 10:12:32 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/23 10:51:32 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ t_list	*ft_read_file(int fd, t_map *map_details);
 
 char	**ft_create_map(t_list **head, t_map map_details);
 void	ft_clear_map(char **str);
+void	ft_flood_fill(char **map, t_map map_details, int r, int c);
+int	ft_can_eat_and_exit(t_map *map_details);
 
 void	ft_print_map_info(t_map map_details); //////////////////
 

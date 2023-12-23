@@ -51,3 +51,13 @@ void	ft_print_map_info(t_map map_details)
 //	printf("NULL\n");
 //	return (0);
 //}
+
+void	ft_print_map(char **map, int rows)
+{
+	int	r;
+
+	r = -1;
+	while (++r < rows)
+		printf("%s", map[r]);
+	printf("\n---------------------------------------\n");
+}
