@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:55:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/23 10:50:12 by zech-chi         ###   ########.fr       */
+/*   Updated: 2023/12/24 16:07:26 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,16 @@ void	ft_flood_fill(char **map, t_map map_details, int r, int c)
 	directions[3][0] = 0;
 	directions[3][1] = -1;
 	map[r][c] = 'v';
+	int j = -1;
+	while (++j < map_details.rows)
+	{
+		printf("%s", map[j]);
+	}
+	printf("\n-------------------------------------------------------------\n");
 	i = -1;
 	while (++i < 4)
 	{
+		
 		nr = r + directions[i][0];
 		nc = c + directions[i][1];
 		if ((0 <= nr && nr < map_details.rows) \

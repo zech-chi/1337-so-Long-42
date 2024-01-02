@@ -1,25 +1,35 @@
-MANSRCS = 	get_next_line.c get_next_line_utils.c \
-			linked_list.c \
-			so_long.c so_long_utils1.c so_long_utils2.c\
-			help_function_must_removed.c
+NAME = so_long
 
-MANOBJS = $(MANSRCS:.c=.o)
+CC = cc
 
-NAME = so_long.a
+CFLAGS = -Wall -Wextra -Werror
 
-$(NAME): $(MANOBJS)
-	ar -rcs $(NAME) $^
+RM = rm -f
+
+SRCS = get_next_line.c\
+		get_next_line_utils.c\
+		linked_list.c\
+		so_long.c\
+		so_long_utils1.c\
+		so_long_utils2.c\
+		help_function_must_removed.c
+
+OBJS = $(SRCS:.c=.o)
+
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.c so_long.h
-	cc -Wall -Wextra -Werror -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 clean:
-	rm -f $(MANOBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
