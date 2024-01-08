@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2023/12/23 10:51:32 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/08 17:49:15 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ int	ft_can_eat_and_exit(t_map *map_details);
 
 void	ft_print_map_info(t_map map_details); //////////////////
 
+int	ft_strcmp(char *s1, char *s2);
+int	ft_is_valid_map_name(char *map_name);
 // gabreg colector!!!!!
 #endif
