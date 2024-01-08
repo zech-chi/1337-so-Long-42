@@ -6,16 +6,15 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-SRCS = get_next_line.c\
+SRCS =  get_next_line.c\
 		get_next_line_utils.c\
 		linked_list.c\
 		so_long.c\
 		so_long_utils1.c\
 		so_long_utils2.c\
-		help_function_must_removed.c
+		so_long_utils3.c\
 
 OBJS = $(SRCS:.c=.o)
-
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
