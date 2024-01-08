@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:55:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/08 17:53:55 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/08 20:23:03 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,22 @@ int	ft_can_eat_and_exit(t_map *map_details)
 		}
 	}
 	return (ft_clear_map(map_copy), 1);
+}
+
+int	ft_check_map_is_valid(t_map *map_info, int fd)
+{
+	t_list	*map_list;
+
+	map_list = ft_read_file(fd, map_info);
+	map_info->map = ft_create_map(&map_list, *map_info);
+	ft_lstclear(&map_list);
+	if (!map_info->map)
+		return (0);
+	if (!ft_is_valid_map_part1(*map_info)
+		|| !ft_is_valid_map_part2(*map_info, 0))
+		return (ft_clear_map(map_info->map), 0);
+	if (!ft_can_eat_and_exit(map_info))
+		return (ft_clear_map(map_info->map), 0);
+	ft_is_valid_map_part2(*map_info, 1);
+	return (1);
 }
