@@ -16,11 +16,15 @@ SRCS =  get_next_line.c\
 
 OBJS = $(SRCS:.c=.o)
 
+#$(NAME): $(OBJS)
+#	$(CC) $(CFLAGS) $^ -o $@
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
 
+#%.o: %.c so_long.h
+#	$(CC) $(CFLAGS) -c $< -o $@
 %.o: %.c so_long.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 all: $(NAME)
 
