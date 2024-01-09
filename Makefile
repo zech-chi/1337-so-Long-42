@@ -13,13 +13,15 @@ SRCS =  get_next_line.c\
 		so_long_utils1.c\
 		so_long_utils2.c\
 		so_long_utils3.c\
+		moves.c\
+		graphical_part_1.c
 
 OBJS = $(SRCS:.c=.o)
 
 #$(NAME): $(OBJS)
 #	$(CC) $(CFLAGS) $^ -o $@
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+	$(CC) $(CFLAGS) $^ -lmlx -framework OpenGL -framework AppKit -o $@
 
 #%.o: %.c so_long.h
 #	$(CC) $(CFLAGS) -c $< -o $@

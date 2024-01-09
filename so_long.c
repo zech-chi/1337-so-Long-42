@@ -6,56 +6,18 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:15:49 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/09 19:24:47 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:25:54 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <mlx.h>
+
 void	ft_print_map_info(t_map map_details);
 void	ft_print_map(char **map, int rows);
 
 void	ft_leaks(void)
 {
 	system("leaks so_long");
-}
-
-void	ft_set_pieces_in_win(void *mlx, void *mlx_win, t_map map_info)
-{
-	int	rpxl;
-	int	cpxl;
-	int	r;
-	int	c;
-	void	*wall;
-	void	*coin;
-	void	*exit_e;
-	void	*player;
-
-	rpxl = 60;
-	cpxl = 60;
-	r = -1;
-	wall = mlx_xpm_file_to_image(mlx, "textures/wall2.xpm", &cpxl, &rpxl);
-	coin = mlx_xpm_file_to_image(mlx, "textures/coin1.xpm", &cpxl, &rpxl);
-	exit_e = mlx_xpm_file_to_image(mlx, "textures/exit1.xpm", &cpxl, &rpxl);
-	player = mlx_xpm_file_to_image(mlx, "textures/player.xpm", &cpxl, &rpxl);
-
-	while (++r < map_info.rows)
-	{
-		c = -1;
-		
-		while (++c < map_info.cols)
-		{
-			if (map_info.map[r][c] == '1')
-				mlx_put_image_to_window(mlx, mlx_win, wall, cpxl * c, rpxl * r);
-			else if (map_info.map[r][c] == 'C')
-				mlx_put_image_to_window(mlx, mlx_win, coin, cpxl * c, rpxl * r);
-			else if (map_info.map[r][c] == 'E')
-				mlx_put_image_to_window(mlx, mlx_win, exit_e, cpxl * c, rpxl * r);
-			else if (map_info.map[r][c] == 'P')
-				mlx_put_image_to_window(mlx, mlx_win, player, cpxl * c, rpxl * r);
-
-		}
-	}
 }
 
 int	main(int ac, char **av)
@@ -66,17 +28,16 @@ int	main(int ac, char **av)
 	//atexit(ft_leaks);
 	if (ac != 2 || !ft_is_valid_map_name(av[1]))
 		return (0);
-	map_info = (t_map){-1, -1, 1, 1, 0, 0, 0, -1, -1, -1, -1, 0, 1, 1, NULL};
+	ft_initialize_map_info(&map_info);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1 || !ft_check_map_is_valid(&map_info, fd))
 		return (ft_clear_map(map_info.map), 0);
 	/// graphical part
-	void	*mlx;
-	void	*mlx_win;
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 60 * map_info.cols, 60 * map_info.rows, "so+_+long");
-	ft_set_pieces_in_win(mlx, mlx_win, map_info);
-	mlx_loop(mlx);
+	ft_fill_mlx_map_info(&map_info);
+	
+	ft_set_pieces_in_win(&map_info);
+	mlx_hook(map_info.mlx_win, 2, 0, &ft_get_pressed_key, &map_info);
+	mlx_loop(map_info.mlx);
 	//ft_print_map_info(map_info);
 	ft_clear_map(map_info.map);
 	return (close(fd), 0);
