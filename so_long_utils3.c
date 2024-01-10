@@ -6,11 +6,36 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:49:47 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/10 00:21:44 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/10 01:10:40 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *str)
+{
+	while (*str)
+	{
+		ft_putchar(*str);
+		str++;
+	}
+}
+
+void	ft_putnbr(unsigned int u)
+{
+	if (u < 10)
+		ft_putchar('0' + u);
+	else
+	{
+		ft_putnbr(u / 10);
+		ft_putnbr(u % 10);
+	}
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -27,9 +52,9 @@ int	ft_is_valid_map_name(char *map_name)
 	int	len;
 
 	len = ft_strlen(map_name);
-	if (len < 5)
+	if (len < 4)
 		return (0);
-	if (!ft_strcmp(map_name + len - 4, ".ber") && map_name[len - 5] != '/')
+	if (!ft_strcmp(map_name + len - 4, ".ber"))
 		return (1);
 	return (0);
 }

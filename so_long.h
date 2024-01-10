@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/10 00:26:01 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/10 01:10:52 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ typedef struct s_map
 	void	*passage_img;
 	void	*wall_img;
 	void	*coin_img;
-	void	*exit_img;
+	void	*opened_door_img;
+	void	*closed_door_img;
 	void	*player_img;
 }	t_map;
 
@@ -88,6 +89,9 @@ int		ft_can_eat_and_exit(t_map *map_details);
 int		ft_check_map_is_valid(t_map *map_info, int fd);
 
 // so_long_utils3.c
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(unsigned int u);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_is_valid_map_name(char *map_name);
 void	ft_initialize_map_info(t_map *map_info);

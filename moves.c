@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 00:16:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/10 00:19:38 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/10 01:09:48 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,14 @@ void	ft_move_up(t_map *map_info)
 		map_info->count_player_moves += 1;
 		map_info->player_row -= 1;
 		ft_set_pieces_in_win(map_info);
+		ft_putstr("moves --> ");
+		ft_putnbr(map_info->count_player_moves);
+		ft_putchar('\n');
+	}
+	else if (map_info->map[r - 1][c] == 'E')
+	{
+		if (map_info->count_collectibles == 0)
+			exit(0);
 	}
 }
 
@@ -67,6 +75,14 @@ void	ft_move_right(t_map *map_info)
 		map_info->count_player_moves += 1;
 		map_info->player_col += 1;
 		ft_set_pieces_in_win(map_info);
+		ft_putstr("moves --> ");
+		ft_putnbr(map_info->count_player_moves);
+		ft_putchar('\n');
+	}
+	else if (map_info->map[r][c + 1] == 'E')
+	{
+		if (map_info->count_collectibles == 0)
+			exit(0);
 	}
 }
 
@@ -88,6 +104,14 @@ void	ft_move_down(t_map *map_info)
 		map_info->count_player_moves += 1;
 		map_info->player_row += 1;
 		ft_set_pieces_in_win(map_info);
+		ft_putstr("moves --> ");
+		ft_putnbr(map_info->count_player_moves);
+		ft_putchar('\n');
+	}
+	else if (map_info->map[r + 1][c] == 'E')
+	{
+		if (map_info->count_collectibles == 0)
+			exit(0);
 	}
 }
 
@@ -109,5 +133,13 @@ void	ft_move_left(t_map *map_info)
 		map_info->count_player_moves += 1;
 		map_info->player_col -= 1;
 		ft_set_pieces_in_win(map_info);
+		ft_putstr("moves --> ");
+		ft_putnbr(map_info->count_player_moves);
+		ft_putchar('\n');
+	}
+	else if (map_info->map[r][c - 1] == 'E')
+	{
+		if (map_info->count_collectibles == 0)
+			exit(0);
 	}
 }
