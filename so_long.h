@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 18:10:09 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:28:41 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	ft_put_wall_in_win(t_map *map_info, int r, int c);
 void	ft_put_collectible_in_win(t_map *map_info, int r, int c);
 void	ft_put_door_in_win(t_map *map_info, int r, int c, int opened);
 void	ft_put_player_in_win(t_map *map_info, int r, int c);
-
 
 // 0 --> end the game
 
