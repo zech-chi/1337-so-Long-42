@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:15:49 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 18:30:23 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/11 20:44:10 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 void	ft_leaks(void)
 {
 	system("leaks so_long");
+}
+
+int	ft_close_win(t_map *map_info)
+{
+	mlx_destroy_window(map_info->mlx, map_info->mlx_win);
+	ft_clear_map(map_info->map);
+	exit(1);
 }
 
 int	main(int ac, char **av)
@@ -33,6 +40,7 @@ int	main(int ac, char **av)
 		return (ft_clear_map(map_info.map), 0);
 	ft_set_pieces_in_win(&map_info);
 	mlx_hook(map_info.mlx_win, 2, 0, &ft_get_pressed_key, &map_info);
+	mlx_hook(map_info.mlx_win, 17, 0, &ft_close_win, &map_info);
 	mlx_loop(map_info.mlx);
 	ft_clear_map(map_info.map);
 	return (0);
