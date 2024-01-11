@@ -8,13 +8,16 @@ RM = rm -f
 
 SRCS =  get_next_line.c\
 		get_next_line_utils.c\
+		graphical_part_1.c\
+		graphical_part_2.c\
 		linked_list.c\
+		moves.c\
 		so_long.c\
 		so_long_utils1.c\
 		so_long_utils2.c\
 		so_long_utils3.c\
-		moves.c\
-		graphical_part_1.c
+		so_long_utils4.c\
+
 
 OBJS = $(SRCS:.c=.o)
 
