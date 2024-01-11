@@ -21,13 +21,9 @@ SRCS =  get_next_line.c\
 
 OBJS = $(SRCS:.c=.o)
 
-#$(NAME): $(OBJS)
-#	$(CC) $(CFLAGS) $^ -o $@
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ -lmlx -framework OpenGL -framework AppKit -o $@
 
-#%.o: %.c so_long.h
-#	$(CC) $(CFLAGS) -c $< -o $@
 %.o: %.c so_long.h
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
