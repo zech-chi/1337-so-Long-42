@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 00:22:51 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 18:26:16 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/11 23:42:20 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ void	ft_check_if_valid_mlx_info_1(t_map *map_info, int *is_something_wrong)
 {
 	if (!map_info->wall_img)
 	{
-		ft_putstr_fd("Error\nInvalid wall_img path", 2);
+		ft_putstr_fd("Error\nsomething wrong with wall_img path", 2);
 		*is_something_wrong = 1;
 	}
 	if (!map_info->coin_img)
 	{
-		ft_putstr_fd("Error\nInvalid coin_img path", 2);
+		ft_putstr_fd("Error\nsomething wrong with coin_img path", 2);
 		*is_something_wrong = 1;
 	}
 	if (!map_info->opened_door_img)
 	{
-		ft_putstr_fd("Error\nInvalid opened_door img path", 2);
+		ft_putstr_fd("Error\nsomething wrong with opened_door img path", 2);
 		*is_something_wrong = 1;
 	}
 }
@@ -63,17 +63,17 @@ void	ft_check_if_valid_mlx_info_2(t_map *map_info, int *is_something_wrong)
 {
 	if (!map_info->closed_door_img)
 	{
-		ft_putstr_fd("Error\nInvalid closed_door img path", 2);
+		ft_putstr_fd("Error\nsomething wrong with closed_door img path", 2);
 		*is_something_wrong = 1;
 	}
 	if (!map_info->player_img)
 	{
-		ft_putstr_fd("Error\nInvalid wall img path", 2);
+		ft_putstr_fd("Error\nsomething wrong with wall img path", 2);
 		*is_something_wrong = 1;
 	}
 	if (!map_info->passage_img)
 	{
-		ft_putstr_fd("Error\nInvalid player img path", 2);
+		ft_putstr_fd("Error\nsomething wrong with player img path", 2);
 		*is_something_wrong = 1;
 	}
 }
@@ -89,7 +89,7 @@ int	ft_fill_mlx_map_info(t_map *map_info)
 	map_info->mlx_win = mlx_new_window(map_info->mlx,
 			60 * map_info->cols, 60 * map_info->rows, "so_long");
 	if (!map_info->mlx_win)
-		return (ft_putstr_fd("Error\nInvalid mlx_win", 2), 0);
+		return (ft_putstr_fd("Error\nsomething wrong with mlx_win", 2), 0);
 	map_info->wall_img = mlx_xpm_file_to_image(map_info->mlx,
 			"textures/wall5.xpm", &(map_info->cpxl), &(map_info->rpxl));
 	map_info->coin_img = mlx_xpm_file_to_image(map_info->mlx,
