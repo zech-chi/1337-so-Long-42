@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/10 01:10:52 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:10:09 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*get_next_line(int fd);
 size_t	ft_strlen(char *str);
 char	*ft_strdup(char *str);
 char	*ft_strjoin(char *s1, char *s2);
-void	shift_buff_or_clean_it(char *buff, size_t j);
+void	shift_buff_or_clean_it(char *buff, size_t right);
 int		has_the_end(char *buff, char **line);
 
 // linked_list.c
@@ -93,20 +93,31 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putnbr(unsigned int u);
 int		ft_strcmp(char *s1, char *s2);
+
+// so_long_utils4.c
 int		ft_is_valid_map_name(char *map_name);
 void	ft_initialize_map_info(t_map *map_info);
 
 // moves.c
 int		ft_get_pressed_key(int key, t_map *map_info);
-void	ft_move_up(t_map *map_info);
-void	ft_move_right(t_map *map_info);
-void	ft_move_down(t_map *map_info);
-void	ft_move_left(t_map *map_info);
+void	ft_check_if_the_game_end(t_map *map_info, int dr, int dc);
+void	ft_move_player(t_map *map_info, int dr, int dc);
+void	ft_move(t_map *map_info, int dr, int dc);
 
 // graphical_part_1.c
 void	ft_set_pieces_in_win(t_map *map_info);
-void	ft_fill_mlx_map_info(t_map *map_info);
+void	ft_check_if_valid_mlx_info_1(t_map *map_info, int *is_something_wrong);
+void	ft_check_if_valid_mlx_info_2(t_map *map_info, int *is_something_wrong);
+int		ft_fill_mlx_map_info(t_map *map_info);
 
-void	ft_print_map_info(t_map map_details); //////////////////
+// graphical_part_2.c
+void	ft_put_passage_in_win(t_map *map_info, int r, int c);
+void	ft_put_wall_in_win(t_map *map_info, int r, int c);
+void	ft_put_collectible_in_win(t_map *map_info, int r, int c);
+void	ft_put_door_in_win(t_map *map_info, int r, int c, int opened);
+void	ft_put_player_in_win(t_map *map_info, int r, int c);
+
+
+// 0 --> end the game
 
 #endif
