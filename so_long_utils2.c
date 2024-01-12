@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:55:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 17:48:57 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:03:19 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,16 +109,21 @@ int	ft_can_eat_and_exit(t_map *map_details)
 int	ft_check_map_is_valid(t_map *map_info, int fd)
 {
 	t_list	*map_list;
+	int	check_1;
+	int	check_2;
 
-	map_list = ft_read_file(fd, map_info);
+	map_list = NULL;
+	if (!ft_read_file(fd, map_info, &map_list))
+		return (ft_putstr_fd("Error\ncan't read file or maybe empty", 2), 0);
 	map_info->map = ft_create_map(&map_list, *map_info);
 	ft_lstclear(&map_list);
 	if (!map_info->map)
-		return (0);
-	if (!ft_is_valid_map_part1(*map_info)
-		|| !ft_is_valid_map_part2(*map_info, 0))
-		return (0);
+		return (ft_putstr_fd("Error\nmap creation was failed", 2), 0);
+	check_1 = ft_is_valid_map_part1(*map_info);
+	check_2 = ft_is_valid_map_part2(*map_info, 0);
+	if (!check_1 || !check_2)
+		return (ft_clear_map(map_info->map), 0);
 	if (!ft_can_eat_and_exit(map_info) || !ft_is_valid_map_part2(*map_info, 1))
-		return (0);
+		return (ft_clear_map(map_info->map), 0);
 	return (1);
 }

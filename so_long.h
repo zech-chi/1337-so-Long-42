@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 20:40:23 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:04:43 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void	ft_putstr_fd(char *s, int fd);
 int		ft_is_valid_map_part1(t_map map_details);
 int		ft_is_valid_map_part2(t_map map_details, int check_path);
 void	ft_line_scanner(t_map *map_details, char *line, int r, int *c);
-t_list	*ft_read_file(int fd, t_map *map_details);
+int		ft_read_file(int fd, t_map *map_details, t_list **map_list);
+//t_list	*ft_read_file(int fd, t_map *map_details);
 
 // so_long_utils2.c
 char	**ft_create_map(t_list **head, t_map map_details);
@@ -117,8 +118,11 @@ void	ft_put_collectible_in_win(t_map *map_info, int r, int c);
 void	ft_put_door_in_win(t_map *map_info, int r, int c, int opened);
 void	ft_put_player_in_win(t_map *map_info, int r, int c);
 
-// 0 --> ESC key is pressed
-// 1 --> destroy X
-// 2 --> win the game
+/*
+	exit(n)
+	n == 0 --> ESC key is pressed
+	n == 1 --> destroy X
+	n == 2 --> win the game
+*/
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:05:42 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 18:17:06 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/12 13:55:39 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,25 +105,25 @@ void	ft_line_scanner(t_map *map_details, char *line, int r, int *c)
 		(*map_details).is_rectangular = 0;
 }
 
-t_list	*ft_read_file(int fd, t_map *map_details)
+int	ft_read_file(int fd, t_map *map_details, t_list **map_list)
 {
-	t_list	*head;
 	char	*line;
 	int		r;
 	int		c;
 
 	r = 0;
-	head = NULL;
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_lstadd_back(&head, ft_lstnew(line));
+		ft_lstadd_back(map_list, ft_lstnew(line));
 		ft_line_scanner(map_details, line, r++, &c);
 		if (line[c - 1] != '1')
 			(*map_details).surrounded_by_walls = 0;
 		line = get_next_line(fd);
 	}
-	line = (ft_lstlast(head))->content;
+	if (*map_list == NULL)
+		return (0);
+	line = (ft_lstlast(*map_list))->content;
 	c = -1;
 	while (line && line[++c])
 	{
@@ -131,5 +131,5 @@ t_list	*ft_read_file(int fd, t_map *map_details)
 			(*map_details).surrounded_by_walls = 0;
 	}
 	(*map_details).rows = r;
-	return (head);
+	return (1);
 }
