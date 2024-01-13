@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:26:39 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/12 22:23:38 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:10:48 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_free_mlx_business(t_map *map_info)
 {
-	if (map_info->mlx && map_info->mlx_win)
+	if (map_info->mlx)
 	{
 		if (map_info->wall_img)
 			mlx_destroy_image(map_info->mlx, map_info->wall_img);
@@ -32,7 +32,5 @@ void	ft_free_mlx_business(t_map *map_info)
 			mlx_destroy_window(map_info->mlx, map_info->mlx_win);
 		free(map_info->mlx);
 	}
-	if (map_info->mlx_win)
-		mlx_destroy_window(map_info->mlx, map_info->mlx_win);
 	exit(4);
 }

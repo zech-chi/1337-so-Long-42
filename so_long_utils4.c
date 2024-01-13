@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:48:14 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 18:09:54 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:22:56 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,14 @@ void	ft_initialize_map_info(t_map *map_info)
 	map_info->can_player_eat_all_collectibles = 1;
 	map_info->can_player_exit = 1;
 	map_info->count_player_moves = 0;
-	map_info->map = NULL;
 	map_info->rpxl = 60;
 	map_info->cpxl = 60;
+	map_info->mlx = NULL;
+	map_info->mlx_win = NULL;
+	map_info->passage_img = NULL;
+	map_info->wall_img = NULL;
+	map_info->coin_img = NULL;
+	map_info->opened_door_img = NULL;
+	map_info->closed_door_img = NULL;
+	map_info->player_img = NULL;
 }

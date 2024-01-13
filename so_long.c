@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:15:49 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/13 18:42:59 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:23:13 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int ac, char **av)
 	if (!ft_is_valid_map_name(av[1]))
 		return (ft_putstr_fd("Error\ninvalid file name", 2), 0);
 	ft_initialize_map_info(&map_info);
+	map_info.map = NULL;
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Error\nsomething wrong with you're file", 2), 0);
