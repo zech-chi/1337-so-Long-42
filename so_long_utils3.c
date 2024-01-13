@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:49:47 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 18:09:48 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:36:46 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,12 @@ int	ft_strcmp(char *s1, char *s2)
 		s2++;
 	}
 	return ((unsigned char)*s1 - (unsigned char)*s2);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (fd < 0 || !s)
+		return ;
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }

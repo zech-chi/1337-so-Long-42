@@ -18,7 +18,6 @@ SRCS =  get_next_line.c\
 		so_long_utils3.c\
 		so_long_utils4.c\
 
-
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)

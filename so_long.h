@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/13 23:27:18 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:36:56 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,14 @@ int		has_the_end(char *buff, char **line);
 // linked_list.c
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstclear(t_list **lst);
 
 // so_long_utils1.c
-void	ft_putstr_fd(char *s, int fd);
 int		ft_is_valid_map_part1(t_map map_details);
 int		ft_is_valid_map_part2(t_map map_details, int check_path);
 void	ft_line_scanner(t_map *map_details, char *line, int r, int *c);
 int		ft_read_file(int fd, t_map *map_details, t_list **map_list);
-//t_list	*ft_read_file(int fd, t_map *map_details);
 
 // so_long_utils2.c
 char	**ft_create_map(t_list **head, t_map map_details);
@@ -100,6 +97,7 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putnbr(unsigned int u);
 int		ft_strcmp(char *s1, char *s2);
+void	ft_putstr_fd(char *s, int fd);
 
 // so_long_utils4.c
 int		ft_is_valid_map_name(char *map_name);
@@ -116,6 +114,7 @@ void	ft_set_pieces_in_win(t_map *map_info);
 void	ft_check_if_valid_mlx_info_1(t_map *map_info, int *is_something_wrong);
 void	ft_check_if_valid_mlx_info_2(t_map *map_info, int *is_something_wrong);
 int		ft_fill_mlx_map_info(t_map *map_info);
+int		ft_free_mlx_business(t_map *map_info);
 
 // graphical_part_2.c
 void	ft_put_passage_in_win(t_map *map_info, int r, int c);

@@ -6,19 +6,11 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:05:42 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/12 13:55:39 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:36:40 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (fd < 0 || !s)
-		return ;
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
-}
 
 int	ft_is_valid_map_part1(t_map map_details)
 {

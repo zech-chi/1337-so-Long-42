@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 00:16:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 20:44:07 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:04:57 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,7 @@ int	ft_get_pressed_key(int key, t_map *map_info)
 	else if (key == 123 || key == 0)
 		ft_move(map_info, 0, -1);
 	else if (key == 53)
-	{
-		mlx_destroy_window(map_info->mlx, map_info->mlx_win);
-		ft_clear_map(map_info->map);
-		exit(0);
-	}
+		ft_free_mlx_business(map_info);
 	return (0);
 }
 
@@ -44,9 +40,7 @@ void	ft_check_if_the_game_end(t_map *map_info, int dr, int dc)
 		if (map_info->count_collectibles == 0)
 		{
 			ft_putstr("\nyou win 🎉🏆🥇\n");
-			mlx_destroy_window(map_info->mlx, map_info->mlx_win);
-			ft_clear_map(map_info->map);
-			exit(2);
+			ft_free_mlx_business(map_info);
 		}
 	}
 }

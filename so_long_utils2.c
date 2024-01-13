@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:55:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/12 14:03:19 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:26:23 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_create_map(t_list **head, t_map map_details)
 	cur_node = *head;
 	while (cur_node)
 	{
-		map[r++] = cur_node->content;
+		map[r++] = ft_strdup(cur_node->content);
 		cur_node = cur_node->next;
 	}
 	map[r] = NULL;
@@ -109,8 +109,8 @@ int	ft_can_eat_and_exit(t_map *map_details)
 int	ft_check_map_is_valid(t_map *map_info, int fd)
 {
 	t_list	*map_list;
-	int	check_1;
-	int	check_2;
+	int		check_1;
+	int		check_2;
 
 	map_list = NULL;
 	if (!ft_read_file(fd, map_info, &map_list))

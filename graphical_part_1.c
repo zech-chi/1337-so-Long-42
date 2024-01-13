@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 00:22:51 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/13 23:28:03 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:30:49 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,27 @@ int	ft_fill_mlx_map_info(t_map *map_info)
 	ft_check_if_valid_mlx_info_1(map_info, &is_something_wrong);
 	ft_check_if_valid_mlx_info_2(map_info, &is_something_wrong);
 	return (!is_something_wrong);
+}
+
+int	ft_free_mlx_business(t_map *map_info)
+{
+	if (map_info->mlx)
+	{
+		if (map_info->wall_img)
+			mlx_destroy_image(map_info->mlx, map_info->wall_img);
+		if (map_info->coin_img)
+			mlx_destroy_image(map_info->mlx, map_info->coin_img);
+		if (map_info->opened_door_img)
+			mlx_destroy_image(map_info->mlx, map_info->opened_door_img);
+		if (map_info->closed_door_img)
+			mlx_destroy_image(map_info->mlx, map_info->closed_door_img);
+		if (map_info->player_img)
+			mlx_destroy_image(map_info->mlx, map_info->player_img);
+		if (map_info->passage_img)
+			mlx_destroy_image(map_info->mlx, map_info->passage_img);
+		if (map_info->mlx_win)
+			mlx_destroy_window(map_info->mlx, map_info->mlx_win);
+	}
+	ft_clear_map(map_info->map);
+	return (exit(5), 0);
 }
