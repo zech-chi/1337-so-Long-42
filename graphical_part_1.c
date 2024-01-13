@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 00:22:51 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/13 18:42:52 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:28:03 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,17 @@ int	ft_fill_mlx_map_info(t_map *map_info)
 	if (!map_info->mlx_win)
 		return (ft_putstr_fd("Error\nsomething wrong with mlx_win", 2), 0);
 	map_info->wall_img = mlx_xpm_file_to_image(map_info->mlx,
-			"textures/wall5.xpm", &(map_info->cpxl), &(map_info->rpxl));
+			WALL_IMG, &(map_info->cpxl), &(map_info->rpxl));
 	map_info->coin_img = mlx_xpm_file_to_image(map_info->mlx,
-			"textures/coin1.xpm", &(map_info->cpxl), &(map_info->rpxl));
+			COIN_IMG, &(map_info->cpxl), &(map_info->rpxl));
 	map_info->opened_door_img = mlx_xpm_file_to_image(map_info->mlx,
-			"textures/opened_door_1.xpm", &(map_info->cpxl), &(map_info->rpxl));
+			OPENED_DOOR_IMG, &(map_info->cpxl), &(map_info->rpxl));
 	map_info->closed_door_img = mlx_xpm_file_to_image(map_info->mlx,
-			"textures/closed_door_1.xpm", &(map_info->cpxl), &(map_info->rpxl));
+			CLOSED_DOOR_IMG, &(map_info->cpxl), &(map_info->rpxl));
 	map_info->player_img = mlx_xpm_file_to_image(map_info->mlx,
-			"textures/player3.xpm", &(map_info->cpxl), &(map_info->rpxl));
+			PLAYER_IMG, &(map_info->cpxl), &(map_info->rpxl));
 	map_info->passage_img = mlx_xpm_file_to_image(map_info->mlx,
-			"textures/passage.xpm", &(map_info->cpxl), &(map_info->rpxl));
+			PASSAGE_IMG, &(map_info->cpxl), &(map_info->rpxl));
 	ft_check_if_valid_mlx_info_1(map_info, &is_something_wrong);
 	ft_check_if_valid_mlx_info_2(map_info, &is_something_wrong);
 	return (!is_something_wrong);

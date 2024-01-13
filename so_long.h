@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/12 14:04:43 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:27:18 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include <limits.h>
 # include <mlx.h>
 # define BUFFER_SIZE 1
+# define WALL_IMG "textures/wall5.xpm"
+# define COIN_IMG "textures/coin1.xpm"
+# define OPENED_DOOR_IMG "textures/opened_door_1.xpm"
+# define CLOSED_DOOR_IMG "textures/closed_door_1.xpm"
+# define PLAYER_IMG "textures/player3.xpm"
+# define PASSAGE_IMG "textures/passage.xpm"
 
 typedef struct s_list
 {
