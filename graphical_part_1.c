@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 00:22:51 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/11 23:42:20 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:42:52 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ int	ft_fill_mlx_map_info(t_map *map_info)
 			"textures/passage.xpm", &(map_info->cpxl), &(map_info->rpxl));
 	ft_check_if_valid_mlx_info_1(map_info, &is_something_wrong);
 	ft_check_if_valid_mlx_info_2(map_info, &is_something_wrong);
-	return (is_something_wrong);
+	return (!is_something_wrong);
 }
