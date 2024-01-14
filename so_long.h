@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/14 00:36:56 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:59:52 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	ft_lstclear(t_list **lst);
 
 // so_long_utils1.c
 int		ft_is_valid_map_part1(t_map map_details);
-int		ft_is_valid_map_part2(t_map map_details, int check_path);
+int		ft_is_valid_map_part2(t_map map_details);
+int		ft_is_valid_map_part3(t_map map_details);
 void	ft_line_scanner(t_map *map_details, char *line, int r, int *c);
 int		ft_read_file(int fd, t_map *map_details, t_list **map_list);
 
@@ -122,12 +123,5 @@ void	ft_put_wall_in_win(t_map *map_info, int r, int c);
 void	ft_put_collectible_in_win(t_map *map_info, int r, int c);
 void	ft_put_door_in_win(t_map *map_info, int r, int c, int opened);
 void	ft_put_player_in_win(t_map *map_info, int r, int c);
-
-/*
-	exit(n)
-	n == 0 --> ESC key is pressed
-	n == 1 --> destroy X
-	n == 2 --> win the game
-*/
 
 #endif

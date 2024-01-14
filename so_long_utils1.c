@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:05:42 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/14 00:36:40 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/14 00:49:11 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,40 @@ int	ft_is_valid_map_part1(t_map map_details)
 	return (is_something_worng == 0);
 }
 
-int	ft_is_valid_map_part2(t_map map_details, int check_path)
+int	ft_is_valid_map_part2(t_map map_details)
 {
 	int	is_something_worng;
 
 	is_something_worng = 0;
-	if (!check_path && map_details.count_starting_position != 1)
+	if (map_details.count_starting_position != 1)
 	{
 		ft_putstr_fd("Error\nThe map must contain 1 starting position!", 2);
 		is_something_worng = 1;
 	}
-	if (!check_path && map_details.have_another_char)
+	if (map_details.have_another_char)
 	{
 		ft_putstr_fd("Error\nThe map must contain 0, 1, C, E and P!", 2);
 		is_something_worng = 1;
 	}
-	if (check_path && !map_details.can_player_eat_all_collectibles)
+	if (map_details.rows > 23 || map_details.cols > 42)
+	{
+		ft_putstr_fd("Error\nbe kind! and give a small map y<=23 and x<=42", 2);
+		is_something_worng = 1;
+	}
+	return (is_something_worng == 0);
+}
+
+int	ft_is_valid_map_part3(t_map map_details)
+{
+	int	is_something_worng;
+
+	is_something_worng = 0;
+	if (!map_details.can_player_eat_all_collectibles)
 	{
 		ft_putstr_fd("Error\nthe player can't eat all collectibles!", 2);
 		is_something_worng = 1;
 	}
-	if (check_path && !map_details.can_player_exit)
+	if (!map_details.can_player_exit)
 	{
 		ft_putstr_fd("Error\nthe player can't exit", 2);
 		is_something_worng = 1;
