@@ -11,7 +11,7 @@ SRCS =  get_next_line.c\
 		graphical_part_1.c\
 		graphical_part_2.c\
 		linked_list.c\
-		moves.c\
+		play.c\
 		so_long.c\
 		so_long_utils1.c\
 		so_long_utils2.c\
