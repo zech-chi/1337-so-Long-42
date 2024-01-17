@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/14 00:59:52 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:37:29 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,16 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstclear(t_list **lst);
 
 // so_long_utils1.c
-int		ft_is_valid_map_part1(t_map map_details);
-int		ft_is_valid_map_part2(t_map map_details);
-int		ft_is_valid_map_part3(t_map map_details);
 void	ft_line_scanner(t_map *map_details, char *line, int r, int *c);
+void	ft_scanne_last_line(char *line, t_map *map_info);
 int		ft_read_file(int fd, t_map *map_details, t_list **map_list);
+void	ft_clear_map_n(char **str, int size);
+void	ft_clear_map(char **str);
 
 // so_long_utils2.c
 char	**ft_create_map(t_list **head, t_map map_details);
-void	ft_clear_map(char **str);
 void	ft_flood_fill(char **map, t_map map_details, int r, int c);
+void	ft_can_eat_and_exit_help(t_map *map_details, char **map_copy);
 int		ft_can_eat_and_exit(t_map *map_details);
 int		ft_check_map_is_valid(t_map *map_info, int fd);
 
@@ -103,10 +103,13 @@ void	ft_putstr_fd(char *s, int fd);
 // so_long_utils4.c
 int		ft_is_valid_map_name(char *map_name);
 void	ft_initialize_map_info(t_map *map_info);
+int		ft_is_valid_map_part1(t_map map_details);
+int		ft_is_valid_map_part2(t_map map_details);
+int		ft_is_valid_map_part3(t_map map_details);
 
-// moves.c
+// play.c
 int		ft_get_pressed_key(int key, t_map *map_info);
-void	ft_check_if_the_game_end(t_map *map_info, int dr, int dc);
+int		ft_check_if_the_game_end(t_map *map_info);
 void	ft_move_player(t_map *map_info, int dr, int dc);
 void	ft_move(t_map *map_info, int dr, int dc);
 

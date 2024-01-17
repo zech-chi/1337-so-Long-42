@@ -6,80 +6,11 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 10:05:42 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/14 00:49:11 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:08:42 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	ft_is_valid_map_part1(t_map map_details)
-{
-	int	is_something_worng;
-
-	is_something_worng = 0;
-	if (map_details.cols == map_details.rows || (!map_details.is_rectangular))
-	{
-		ft_putstr_fd("Error\nThe map must be rectangular!", 2);
-		is_something_worng = 1;
-	}
-	if (!map_details.surrounded_by_walls)
-	{
-		ft_putstr_fd("Error\nThe map must be closed/surrounded by walls!", 2);
-		is_something_worng = 1;
-	}
-	if (!map_details.count_collectibles)
-	{
-		ft_putstr_fd("Error\nThe map must contain at least 1 collectible!", 2);
-		is_something_worng = 1;
-	}
-	if (map_details.count_map_exit != 1)
-	{
-		ft_putstr_fd("Error\nThe map must contain 1 exit!", 2);
-		is_something_worng = 1;
-	}
-	return (is_something_worng == 0);
-}
-
-int	ft_is_valid_map_part2(t_map map_details)
-{
-	int	is_something_worng;
-
-	is_something_worng = 0;
-	if (map_details.count_starting_position != 1)
-	{
-		ft_putstr_fd("Error\nThe map must contain 1 starting position!", 2);
-		is_something_worng = 1;
-	}
-	if (map_details.have_another_char)
-	{
-		ft_putstr_fd("Error\nThe map must contain 0, 1, C, E and P!", 2);
-		is_something_worng = 1;
-	}
-	if (map_details.rows > 23 || map_details.cols > 42)
-	{
-		ft_putstr_fd("Error\nbe kind! and give a small map y<=23 and x<=42", 2);
-		is_something_worng = 1;
-	}
-	return (is_something_worng == 0);
-}
-
-int	ft_is_valid_map_part3(t_map map_details)
-{
-	int	is_something_worng;
-
-	is_something_worng = 0;
-	if (!map_details.can_player_eat_all_collectibles)
-	{
-		ft_putstr_fd("Error\nthe player can't eat all collectibles!", 2);
-		is_something_worng = 1;
-	}
-	if (!map_details.can_player_exit)
-	{
-		ft_putstr_fd("Error\nthe player can't exit", 2);
-		is_something_worng = 1;
-	}
-	return (is_something_worng == 0);
-}
 
 void	ft_line_scanner(t_map *map_details, char *line, int r, int *c)
 {
@@ -110,6 +41,18 @@ void	ft_line_scanner(t_map *map_details, char *line, int r, int *c)
 		(*map_details).is_rectangular = 0;
 }
 
+void	ft_scanne_last_line(char *line, t_map *map_info)
+{
+	int	c;
+
+	c = -1;
+	while (line && line[++c])
+	{
+		if (line[c] != '1')
+			map_info->surrounded_by_walls = 0;
+	}
+}
+
 int	ft_read_file(int fd, t_map *map_details, t_list **map_list)
 {
 	char	*line;
@@ -121,6 +64,8 @@ int	ft_read_file(int fd, t_map *map_details, t_list **map_list)
 	while (line)
 	{
 		ft_lstadd_back(map_list, ft_lstnew(line));
+		if (!map_list)
+			exit(0);
 		ft_line_scanner(map_details, line, r++, &c);
 		if (line[c - 1] != '1')
 			(*map_details).surrounded_by_walls = 0;
@@ -129,12 +74,37 @@ int	ft_read_file(int fd, t_map *map_details, t_list **map_list)
 	if (*map_list == NULL)
 		return (0);
 	line = (ft_lstlast(*map_list))->content;
-	c = -1;
-	while (line && line[++c])
-	{
-		if (line[c] != '1')
-			(*map_details).surrounded_by_walls = 0;
-	}
+	ft_scanne_last_line(line, map_details);
 	(*map_details).rows = r;
 	return (1);
+}
+
+void	ft_clear_map_n(char **str, int size)
+{
+	int	r;
+
+	if (size == 0)
+		return ;
+	r = 0;
+	while (r < size)
+	{
+		free(str[r]);
+		r++;
+	}
+	free(str);
+}
+
+void	ft_clear_map(char **str)
+{
+	int	r;
+
+	if (!str)
+		return ;
+	r = 0;
+	while (str[r])
+	{
+		free(str[r]);
+		r++;
+	}
+	free(str);
 }

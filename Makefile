@@ -4,6 +4,8 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+
 RM = rm -f
 
 SRCS =  get_next_line.c\
@@ -21,10 +23,16 @@ SRCS =  get_next_line.c\
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ -lmlx -framework OpenGL -framework AppKit -o $@
+	$(CC) $(CFLAGS) $(MLXFLAGS) $^ -o $@
+
+#$(BONNAME): $(BONOBJS)
+#	$(CC) $(CFLAGS) $(MLXFLAGS) $^ -o $@
+
+#%_bonus.o: %_bonus.c so_long_bonus.h
+#	$(CC) $(CFLAGS) -c $< -o $@
 
 %.o: %.c so_long.h
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 

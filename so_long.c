@@ -6,23 +6,17 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:15:49 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/14 00:25:32 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:36:57 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_leaks(void)
-{
-	system("leaks so_long");
-}
 
 int	main(int ac, char **av)
 {
 	t_map	map_info;
 	int		fd;
 
-	atexit(ft_leaks);
 	if (ac != 2)
 		return (ft_putstr_fd("Error\nenter a path of map", 2), 0);
 	if (!ft_is_valid_map_name(av[1]))
@@ -40,6 +34,7 @@ int	main(int ac, char **av)
 	ft_set_pieces_in_win(&map_info);
 	mlx_hook(map_info.mlx_win, 2, 0, &ft_get_pressed_key, &map_info);
 	mlx_hook(map_info.mlx_win, 17, 0, &ft_free_mlx_business, &map_info);
+	mlx_loop_hook(map_info.mlx, &ft_check_if_the_game_end, &map_info);
 	mlx_loop(map_info.mlx);
 	ft_clear_map(map_info.map);
 	return (0);

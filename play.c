@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves.c                                            :+:      :+:    :+:   */
+/*   play.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 00:16:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/14 00:04:57 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:39:43 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,10 @@ int	ft_get_pressed_key(int key, t_map *map_info)
 	return (0);
 }
 
-void	ft_check_if_the_game_end(t_map *map_info, int dr, int dc)
+int	ft_check_if_the_game_end(t_map *map_info)
 {
-	int	r;
-	int	c;
-
-	r = map_info->player_row;
-	c = map_info->player_col;
-	if (map_info->map[r + dr][c + dc] == 'E')
+	if (map_info->player_row == map_info->exit_row
+		&& map_info->player_col == map_info->exit_col)
 	{
 		if (map_info->count_collectibles == 0)
 		{
@@ -43,6 +39,7 @@ void	ft_check_if_the_game_end(t_map *map_info, int dr, int dc)
 			ft_free_mlx_business(map_info);
 		}
 	}
+	return (0);
 }
 
 void	ft_move_player(t_map *map_info, int dr, int dc)
@@ -91,7 +88,6 @@ void	ft_move(t_map *map_info, int dr, int dc)
 		map_info->count_player_moves += 1;
 		ft_putstr("\nmoves --> ");
 		ft_putnbr(map_info->count_player_moves);
-		ft_check_if_the_game_end(map_info, dr, dc);
 		ft_move_player(map_info, dr, dc);
 	}
 }

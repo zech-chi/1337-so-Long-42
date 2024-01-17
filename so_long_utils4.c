@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:48:14 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/13 23:22:56 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:07:35 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,73 @@ void	ft_initialize_map_info(t_map *map_info)
 	map_info->opened_door_img = NULL;
 	map_info->closed_door_img = NULL;
 	map_info->player_img = NULL;
+}
+
+int	ft_is_valid_map_part1(t_map map_details)
+{
+	int	is_something_worng;
+
+	is_something_worng = 0;
+	if (map_details.cols == map_details.rows || (!map_details.is_rectangular))
+	{
+		ft_putstr_fd("Error\nThe map must be rectangular!", 2);
+		is_something_worng = 1;
+	}
+	if (!map_details.surrounded_by_walls)
+	{
+		ft_putstr_fd("Error\nThe map must be closed/surrounded by walls!", 2);
+		is_something_worng = 1;
+	}
+	if (!map_details.count_collectibles)
+	{
+		ft_putstr_fd("Error\nThe map must contain at least 1 collectible!", 2);
+		is_something_worng = 1;
+	}
+	if (map_details.count_map_exit != 1)
+	{
+		ft_putstr_fd("Error\nThe map must contain 1 exit!", 2);
+		is_something_worng = 1;
+	}
+	return (is_something_worng == 0);
+}
+
+int	ft_is_valid_map_part2(t_map map_details)
+{
+	int	is_something_worng;
+
+	is_something_worng = 0;
+	if (map_details.count_starting_position != 1)
+	{
+		ft_putstr_fd("Error\nThe map must contain 1 starting position!", 2);
+		is_something_worng = 1;
+	}
+	if (map_details.have_another_char)
+	{
+		ft_putstr_fd("Error\nThe map must contain 0, 1, C, E and P!", 2);
+		is_something_worng = 1;
+	}
+	if (map_details.rows > 23 || map_details.cols > 42)
+	{
+		ft_putstr_fd("Error\nbe kind! and give a small map y<=23 and x<=42", 2);
+		is_something_worng = 1;
+	}
+	return (is_something_worng == 0);
+}
+
+int	ft_is_valid_map_part3(t_map map_details)
+{
+	int	is_something_worng;
+
+	is_something_worng = 0;
+	if (!map_details.can_player_eat_all_collectibles)
+	{
+		ft_putstr_fd("Error\nthe player can't eat all collectibles!", 2);
+		is_something_worng = 1;
+	}
+	if (!map_details.can_player_exit)
+	{
+		ft_putstr_fd("Error\nthe player can't exit", 2);
+		is_something_worng = 1;
+	}
+	return (is_something_worng == 0);
 }

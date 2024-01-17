@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 13:55:03 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/15 11:00:40 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:08:59 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,18 @@ char	**ft_create_map(t_list **head, t_map map_details)
 	cur_node = *head;
 	while (cur_node)
 	{
-		map[r++] = ft_strdup(cur_node->content);
+		map[r] = ft_strdup(cur_node->content);
+		if (!map[r])
+		{
+			ft_clear_map_n(map, r);
+			ft_lstclear(head);
+			exit(0);
+		}
 		cur_node = cur_node->next;
+		r++;
 	}
 	map[r] = NULL;
 	return (map);
-}
-
-void	ft_clear_map(char **str)
-{
-	int	r;
-
-	if (!str)
-		return ;
-	r = 0;
-	while (str[r])
-	{
-		free(str[r]);
-		r++;
-	}
-	free(str);
 }
 
 void	ft_flood_fill(char **map, t_map map_details, int r, int c)
@@ -77,22 +69,13 @@ void	ft_flood_fill(char **map, t_map map_details, int r, int c)
 	}
 }
 
-int	ft_can_eat_and_exit(t_map *map_details)
+void	ft_can_eat_and_exit_help(t_map *map_details, char **map_copy)
 {
-	char	**map_copy;
-	int		r;
-	int		c;
+	int	r;
+	int	c;
 
-	map_copy = (char **)malloc(sizeof(char *) * (map_details->rows + 1));
-	if (!map_copy)
-		return (0);
 	r = -1;
 	while (++r < map_details->rows)
-		map_copy[r] = ft_strdup(map_details->map[r]);
-	map_copy[r] = NULL;
-	ft_flood_fill(map_copy, *map_details, map_details->player_row, \
-	map_details->player_col);
-	while (--r >= 0)
 	{
 		c = -1;
 		while (++c < map_details->cols)
@@ -103,6 +86,31 @@ int	ft_can_eat_and_exit(t_map *map_details)
 				map_details->can_player_exit = 0;
 		}
 	}
+}
+
+int	ft_can_eat_and_exit(t_map *map_details)
+{
+	char	**map_copy;
+	int		r;
+
+	map_copy = (char **)malloc(sizeof(char *) * (map_details->rows + 1));
+	if (!map_copy)
+		return (0);
+	r = -1;
+	while (++r < map_details->rows)
+	{
+		map_copy[r] = ft_strdup(map_details->map[r]);
+		if (!map_copy[r])
+		{
+			ft_clear_map(map_details->map);
+			ft_clear_map_n(map_copy, r);
+			exit(0);
+		}
+	}
+	map_copy[r] = NULL;
+	ft_flood_fill(map_copy, *map_details, map_details->player_row, \
+	map_details->player_col);
+	ft_can_eat_and_exit_help(map_details, map_copy);
 	return (ft_clear_map(map_copy), 1);
 }
 
