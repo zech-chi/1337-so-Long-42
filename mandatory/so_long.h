@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/17 19:00:32 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:32:54 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include <unistd.h>
-# include <stdio.h> ////////////////////
 # include <stdlib.h>
 # include <fcntl.h>
 # include <limits.h>

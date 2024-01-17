@@ -22,23 +22,23 @@ SRCS =  mandatory/get_next_line.c\
 		mandatory/so_long_utils3.c\
 		mandatory/so_long_utils4.c\
 
-BONSRCS =  bonus/get_next_line.c\
-		bonus/get_next_line_utils.c\
-		bonus/graphical_part_1.c\
-		bonus/graphical_part_2.c\
-		bonus/graphical_part_3.c\
-		bonus/graphical_part_4.c\
-		bonus/graphical_part_5.c\
-		bonus/linked_list.c\
-		bonus/play.c\
-		bonus/so_long.c\
-		bonus/so_long_utils1.c\
-		bonus/so_long_utils2.c\
-		bonus/so_long_utils3.c\
-		bonus/so_long_utils4.c\
-		bonus/so_long_utils5.c\
-		bonus/bfs.c\
-		bonus/bfs_2.c
+BONSRCS =  bonus/get_next_line_bonus.c\
+		bonus/get_next_line_utils_bonus.c\
+		bonus/graphical_part_1_bonus.c\
+		bonus/graphical_part_2_bonus.c\
+		bonus/graphical_part_3_bonus.c\
+		bonus/graphical_part_4_bonus.c\
+		bonus/graphical_part_5_bonus.c\
+		bonus/linked_list_bonus.c\
+		bonus/play_bonus.c\
+		bonus/so_long_bonus.c\
+		bonus/so_long_utils1_bonus.c\
+		bonus/so_long_utils2_bonus.c\
+		bonus/so_long_utils3_bonus.c\
+		bonus/so_long_utils4_bonus.c\
+		bonus/so_long_utils5_bonus.c\
+		bonus/bfs_bonus.c\
+		bonus/bfs_2_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -65,6 +65,9 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(BONNAME)
+
+bonus:
+	$(BONNAME)
 
 re: fclean all
 
