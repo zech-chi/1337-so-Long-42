@@ -8,17 +8,17 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 RM = rm -f
 
-SRCS =  get_next_line.c\
-		get_next_line_utils.c\
-		graphical_part_1.c\
-		graphical_part_2.c\
-		linked_list.c\
-		play.c\
-		so_long.c\
-		so_long_utils1.c\
-		so_long_utils2.c\
-		so_long_utils3.c\
-		so_long_utils4.c\
+SRCS =  mandatory/get_next_line.c\
+		mandatory/get_next_line_utils.c\
+		mandatory/graphical_part_1.c\
+		mandatory/graphical_part_2.c\
+		mandatory/linked_list.c\
+		mandatory/play.c\
+		mandatory/so_long.c\
+		mandatory/so_long_utils1.c\
+		mandatory/so_long_utils2.c\
+		mandatory/so_long_utils3.c\
+		mandatory/so_long_utils4.c\
 
 OBJS = $(SRCS:.c=.o)
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJS)
 #%_bonus.o: %_bonus.c so_long_bonus.h
 #	$(CC) $(CFLAGS) -c $< -o $@
 
-%.o: %.c so_long.h
+%.o: %.c mandatory/so_long.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

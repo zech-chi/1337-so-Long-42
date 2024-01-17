@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/17 18:37:29 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:00:32 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include <limits.h>
 # include <mlx.h>
 # define BUFFER_SIZE 1
-# define WALL_IMG "textures/wall5.xpm"
-# define COIN_IMG "textures/coin1.xpm"
-# define OPENED_DOOR_IMG "textures/opened_door_1.xpm"
-# define CLOSED_DOOR_IMG "textures/closed_door_1.xpm"
-# define PLAYER_IMG "textures/player3.xpm"
-# define PASSAGE_IMG "textures/passage.xpm"
+# define WALL_IMG "mandatory/textures/wall1.xpm"
+# define COIN_IMG "mandatory/textures/coin1.xpm"
+# define OPENED_DOOR_IMG "mandatory/textures/opened_door_1.xpm"
+# define CLOSED_DOOR_IMG "mandatory/textures/closed_door_1.xpm"
+# define PLAYER_IMG "mandatory/textures/player3.xpm"
+# define PASSAGE_IMG "mandatory/textures/passage.xpm"
 
 typedef struct s_list
 {
@@ -128,3 +128,4 @@ void	ft_put_door_in_win(t_map *map_info, int r, int c, int opened);
 void	ft_put_player_in_win(t_map *map_info, int r, int c);
 
 #endif
+
