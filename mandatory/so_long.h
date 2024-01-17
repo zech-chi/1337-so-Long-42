@@ -6,7 +6,7 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 01:12:54 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/17 19:32:54 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:37:00 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,3 @@ void	ft_put_door_in_win(t_map *map_info, int r, int c, int opened);
 void	ft_put_player_in_win(t_map *map_info, int r, int c);
 
 #endif
-

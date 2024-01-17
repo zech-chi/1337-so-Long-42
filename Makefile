@@ -66,8 +66,7 @@ fclean: clean
 	$(RM) $(NAME)
 	$(RM) $(BONNAME)
 
-bonus:
-	$(BONNAME)
+bonus: $(BONNAME)
 
 re: fclean all
 

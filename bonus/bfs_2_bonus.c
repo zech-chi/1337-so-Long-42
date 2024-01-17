@@ -6,13 +6,11 @@
 /*   By: zech-chi <zech-chi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:06:29 by zech-chi          #+#    #+#             */
-/*   Updated: 2024/01/17 19:08:55 by zech-chi         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:35:37 by zech-chi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-#include "so_long.h"
 
 void	ft_check_neighbors_help(t_list **q, char *path, t_map *map_info, char c)
 {
